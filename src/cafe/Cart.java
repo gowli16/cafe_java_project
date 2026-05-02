@@ -12,7 +12,7 @@ public class Cart {
     String choice = "continue";
 
     ArrayList<MenuItem> cartItems = new ArrayList<MenuItem>();
-    String path = "D:\\ANJANA\\CLASS\\Presentation & Projects\\oop\\cart.csv";
+    String path = "cart.csv";
 
     
     public void addToCart() {
