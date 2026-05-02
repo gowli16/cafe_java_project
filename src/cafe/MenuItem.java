@@ -7,7 +7,7 @@ public class MenuItem {
     String choice = null;
     Scanner sc = new Scanner(System.in);
 
-    String path = "D:\\ANJANA\\CLASS\\Presentation & Projects\\oop\\menu.csv";
+    String path = "menu.csv";
 
     private String itemId, itemName, category;
     private double price;
