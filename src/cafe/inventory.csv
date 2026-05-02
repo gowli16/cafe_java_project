@@ -1,0 +1,6 @@
+inventoryId,ingredientName,quantityAvailable,unit,reorderLevel
+1,Coffee Powder,20,kg,5
+2,Milk,15,litre,5
+3,Sugar,10,kg,3
+4,Bread,25,packets,5
+5,Cheese,8,packets,2
