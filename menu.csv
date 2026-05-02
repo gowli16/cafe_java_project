@@ -1,0 +1,34 @@
+ItemID,ItemName,Category,Price,AvailabilityStatus
+M01,Espresso,Coffee,90.0,true
+M02,Americano,Coffee,110.0,true
+M03,Cappuccino,Coffee,140.0,true
+M04,Latte,Coffee,150.0,true
+M05,Mocha,Coffee,170.0,false
+M06,Cold Coffee,Cold Beverage,160.0,true
+M07,Iced Latte,Cold Beverage,170.0,true
+M08,Green Tea,Tea,80.0,true
+M09,Masala Chai,Tea,70.0,true
+M10,Lemon Tea,Tea,85.0,false
+M11,Pancakes,Breakfast,180.0,true
+M12,French Toast,Breakfast,190.0,true
+M13,Omelette Toast,Breakfast,160.0,true
+M14,Granola Bowl,Breakfast,210.0,true
+M15,Club Sandwich,Snack,220.0,true
+M16,Grilled Cheese,Snack,180.0,true
+M17,Veg Wrap,Snack,200.0,true
+M18,Chicken Wrap,Snack,240.0,true
+M19,Garlic Bread,Snack,130.0,true
+M20,Blueberry Muffin,Dessert,120.0,true
+M21,Chocolate Brownie,Dessert,140.0,true
+M22,Cheesecake,Dessert,220.0,true
+M23,Red Velvet Pastry,Dessert,190.0,false
+M24,Croissant,Bakery,110.0,true
+M25,Cinnamon Roll,Bakery,130.0,true
+M26,Fresh Orange Juice,Cold Beverage,150.0,true
+M27,Strawberry Smoothie,Cold Beverage,190.0,true
+M28,Mango Shake,Cold Beverage,180.0,true
+M29,Pasta Alfredo,Main Course,280.0,true
+M30,Chicken Pasta,Main Course,320.0,true
+M31,Veg Burger,Main Course,250.0,true
+M32,Chicken Burger,Main Course,290.0,false
+M33,Milk Chocolate Waffles,Dessert,240.0,true
