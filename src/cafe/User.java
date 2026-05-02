@@ -16,7 +16,7 @@ public class User {
     public void read() {
         employeeMap.clear();
         try (BufferedReader br = new BufferedReader(
-                new FileReader("D:/ANJANA/CLASS/Presentation & Projects/oop/mockpasswordlist.csv"))) {
+                new FileReader("mockpasswordlist.csv"))) {
             String line;
             br.readLine(); 
             while ((line = br.readLine()) != null) {
