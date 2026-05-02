@@ -1,0 +1,53 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter Order ID: ");
+        int orderId = sc.nextInt();
+        Order order = new Order(orderId);
+
+        System.out.print("Enter number of items: ");
+        int n = sc.nextInt();
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("\nItem " + (i + 1));
+
+            System.out.print("Enter Item ID: ");
+            int itemId = sc.nextInt();
+            sc.nextLine();
+
+            System.out.print("Enter Item Name: ");
+            String name = sc.nextLine();
+
+            System.out.print("Enter Quantity: ");
+            int qty = sc.nextInt();
+
+            System.out.print("Enter Price: ");
+            double price = sc.nextDouble();
+
+            OrderItem item = new OrderItem(itemId, name, qty, price);
+            order.addItem(item);
+        }
+
+        order.updateStatus("Confirmed");
+        order.displayOrder();
+
+        System.out.print("\nEnter Payment ID: ");
+        int paymentId = sc.nextInt();
+        sc.nextLine();
+
+        System.out.print("Enter Payment Method (UPI/Card/Cash): ");
+        String method = sc.nextLine();
+
+        Payment payment = new Payment(paymentId, order.totalAmount, method, order);
+        order.setPayment(payment);
+
+        payment.processPayment();
+        payment.generateReceipt();
+
+        sc.close();
+    }
+}
