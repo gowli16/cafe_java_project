@@ -93,6 +93,7 @@ public class SalesReport {
     }
 
     public void displayReport() {
+        generateDailyReport();
         System.out.println("Report ID: " + reportId);
         System.out.println("Total Sales: " + totalSales);
         System.out.println("Best Selling Item: " + bestSellingItem);
