@@ -133,7 +133,7 @@ public class MenuItem {
             case "3":
                 MenuItem lastItem = menuList.get(menuList.size() - 1);
                 int lastId = Integer.parseInt(lastItem.itemId.substring(1));
-                String itemIdAddition = "M" + String.valueOf(lastId + 1);
+                String itemIdAddition = "M" + String.format("%03d", lastId + 1);
                 System.out.print("Enter Item name: ");
                 String nameAddition = sc.nextLine();
 
@@ -219,11 +219,11 @@ public class MenuItem {
     }
     
     
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         MenuItem m = new MenuItem("", "", "", 0, false);
 
         m.displayMenu();
         m.updateItem();
         m.displayMenu();
-    }
+    } */
 }

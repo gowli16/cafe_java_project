@@ -4,6 +4,8 @@ import java.io.*;
 
 public class SalesReport {
 
+    String pathcart="cart.csv";
+    String pathsales="salesreport.csv";
     private int reportId;
     private double totalSales;
     private String bestSellingItem;
@@ -23,7 +25,7 @@ public class SalesReport {
         reportDate = new Date();
 
         try {
-            BufferedReader br = new BufferedReader(new FileReader("/Users/meenakshinm/Desktop/cart.csv"));
+            BufferedReader br = new BufferedReader(new FileReader(pathcart));
             String line;
             br.readLine();
 
@@ -58,7 +60,7 @@ public class SalesReport {
         reportId = 1;
 
         try {
-            BufferedReader br = new BufferedReader(new FileReader("/Users/meenakshinm/Desktop/salesreport.csv"));
+            BufferedReader br = new BufferedReader(new FileReader(pathsales));
             while (br.readLine() != null) {
                 reportId++;
             }
@@ -68,8 +70,8 @@ public class SalesReport {
         }
 
         try {
-            File file = new File("/Users/meenakshinm/Desktop/salesreport.csv");
-            BufferedWriter bw = new BufferedWriter(new FileWriter("/Users/meenakshinm/Desktop/salesreport.csv", true));
+            File file = new File(pathsales);
+            BufferedWriter bw = new BufferedWriter(new FileWriter(pathsales, true));
 
             if (file.length() == 0) {
                 bw.write("reportId,totalSales,bestSellingItem,reportDate");
@@ -91,15 +93,16 @@ public class SalesReport {
     }
 
     public void displayReport() {
+        generateDailyReport();
         System.out.println("Report ID: " + reportId);
         System.out.println("Total Sales: " + totalSales);
         System.out.println("Best Selling Item: " + bestSellingItem);
         System.out.println("Report Date: " + reportDate);
     }
 
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         SalesReport report = new SalesReport(0, 0, "", null);
         report.generateDailyReport();
         report.displayReport();
-    }
+    }*/
 }

@@ -5,8 +5,6 @@ import java.io.*;
 public class Cart {
 
     Scanner sc = new Scanner(System.in);
-
-    // customerId will come from another class (you can pass it later)
     private String customerId;
     private double totalAmount;
     String choice = "continue";
@@ -38,7 +36,17 @@ public class Cart {
             }
             System.out.println("Type 'exit' to stop adding items else type 'continue'");
             choice = sc.nextLine();
+        }viewCart();      
+        totalAmount();
+        System.out.println("Do you want to remove item? (yes/no)");
+        String ans = sc.nextLine();
+
+        if (ans.equalsIgnoreCase("yes")) {
+            removeItem();
+            viewCart();
+            totalAmount();
         }
+        saveCartToCSV();
     }
 
     public void removeItem() {
@@ -52,11 +60,9 @@ public class Cart {
                 return; 
             }
         }
-
         System.out.println("Item not found in cart.");
     }
 
-   
     public void viewCart() {
 
         System.out.printf("%-30s %-10s%n", "Cart Item", "Price");
@@ -68,7 +74,6 @@ public class Cart {
         }
     }
 
- 
     public double totalAmount() {
 
         double sum = 0;
@@ -82,28 +87,30 @@ public class Cart {
         return totalAmount;
     }
 
-    // This allows another class to send customerId into Cart
+    
     public void setCustomerId(String customerId) {
         this.customerId = customerId;
     }
 
-   public void saveCartToCSV() {
+    public void saveCartToCSV() {
 
         try {
 
-            BufferedWriter writer = new BufferedWriter(new FileWriter(path, true));
-
             File file = new File(path);
-            if (file.length() == 0) {
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+
+            boolean isEmpty = file.length() == 0;
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
+            if (isEmpty) {
                 writer.write("CustomerID,ItemName,Price");
                 writer.newLine();
             }
 
-            
             for (MenuItem item : cartItems) {
-
                 writer.write(
-                        customerId + "," +          
+                        customerId + "," +
                         item.getItemName() + "," +
                         item.getPrice()
                 );
@@ -119,8 +126,7 @@ public class Cart {
             System.out.println("Error saving cart: " + e.getMessage());
         }
     }
-
-    // testing main method
+/*    // testing main method
     public static void main(String[] args) {
 
         Cart cart = new Cart();
@@ -129,8 +135,7 @@ public class Cart {
         cart.setCustomerId("C001");
 
         cart.addToCart();     
-        cart.viewCart();      
-        cart.totalAmount();   
+           
         System.out.println("Do you want to remove item? (yes/no)");
         Scanner sc = new Scanner(System.in);
         String ans = sc.nextLine();
@@ -142,5 +147,5 @@ public class Cart {
         }
 
         cart.saveCartToCSV();
-    }
+    } */
 }
