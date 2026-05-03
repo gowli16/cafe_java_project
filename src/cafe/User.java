@@ -10,7 +10,7 @@ public class User {
 
     protected String name, password, userId;
 
-    String path = "D:\\ANJANA\\CLASS\\Presentation & Projects\\oop\\mockpasswordlist.csv";
+    String path = "mockpasswordlist.csv";
 
     public User(String name, String password, String userId) {
         this.name = name;
