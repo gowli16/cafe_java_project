@@ -219,11 +219,11 @@ public class MenuItem {
     }
     
     
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         MenuItem m = new MenuItem("", "", "", 0, false);
 
         m.displayMenu();
         m.updateItem();
         m.displayMenu();
-    }
+    } */
 }
