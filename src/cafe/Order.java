@@ -1,9 +1,9 @@
+import java.util.ArrayList;
 
 public class Order {
     int orderId;
     String orderStatus;
-    OrderItem[] items;
-    int itemCount;
+    ArrayList<OrderItem> items;
     double totalAmount;
 
     Payment payment;
@@ -11,21 +11,19 @@ public class Order {
     public Order(int orderId) {
         this.orderId = orderId;
         this.orderStatus = "Created";
-        this.items = new OrderItem[10];
-        this.itemCount = 0;
+        this.items = new ArrayList<>();
         this.totalAmount = 0;
     }
 
     public void addItem(OrderItem item) {
-        items[itemCount] = item;
-        itemCount++;
+        items.add(item);
         totalAmount += item.subtotal;
     }
 
     public void calculateTotal() {
         totalAmount = 0;
-        for (int i = 0; i < itemCount; i++) {
-            totalAmount += items[i].subtotal;
+        for (OrderItem item : items) {
+            totalAmount += item.subtotal;
         }
     }
 
@@ -37,8 +35,8 @@ public class Order {
         System.out.println("Order ID: " + orderId);
         System.out.println("Status: " + orderStatus);
 
-        for (int i = 0; i < itemCount; i++) {
-            items[i].displayItem();
+        for (OrderItem item : items) {
+            item.displayItem();
         }
 
         System.out.println("Total: " + totalAmount);
