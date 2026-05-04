@@ -1,7 +1,9 @@
+package project;
 import java.util.Scanner;
 
 public class Payment {
-    int paymentId;
+
+    String paymentId;
     double amount;
     String paymentMethod;
     String paymentStatus;
@@ -13,23 +15,31 @@ public class Payment {
         this.paymentStatus = "Pending";
     }
 
-    public void takePayment() {
-        Scanner sc = new Scanner(System.in);
+   
+    public void takePayment(Scanner sc) {
 
         System.out.print("\nEnter Payment ID: ");
-        paymentId = sc.nextInt();
-        sc.nextLine();
+        paymentId = sc.next();
+        sc.nextLine(); 
 
         System.out.print("Enter Payment Method: ");
         paymentMethod = sc.nextLine();
     }
 
-    public void processPayment() {
+   
+    public void processPayment(Scanner sc) {
+
+        takePayment(sc);
+
         paymentStatus = "Completed";
+
         System.out.println("Payment successful for Order ID: " + order.orderId);
+
+        generateReceipt();
     }
 
     public void generateReceipt() {
+
         System.out.println("\n----- RECEIPT -----");
         System.out.println("Order ID: " + order.orderId);
         System.out.println("Amount Paid: " + amount);
