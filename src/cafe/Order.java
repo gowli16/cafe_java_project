@@ -19,28 +19,40 @@ public class Order {
     public void takeOrder() throws Exception {
         Scanner sc = new Scanner(System.in);
 
+        ArrayList<String> ids = new ArrayList<>();
         ArrayList<String> names = new ArrayList<>();
-        ArrayList<Integer> ids = new ArrayList<>();
         ArrayList<Double> prices = new ArrayList<>();
 
         BufferedReader br = new BufferedReader(new FileReader("menu.csv"));
         String line;
 
+        br.readLine(); // skip header
+
         while ((line = br.readLine()) != null) {
             String[] data = line.split(",");
-            ids.add(Integer.parseInt(data[0]));
-            names.add(data[1]);
-            prices.add(Double.parseDouble(data[2]));
+
+            String id = data[0];
+            String name = data[1];
+            double price = Double.parseDouble(data[3]);
+            boolean available = Boolean.parseBoolean(data[4]);
+
+            if (available) {
+                ids.add(id);
+                names.add(name);
+                prices.add(price);
+            }
         }
+
         br.close();
 
         System.out.print("Enter number of items: ");
         int n = sc.nextInt();
 
         for (int i = 0; i < n; i++) {
+
             System.out.println("\nMenu:");
             for (int j = 0; j < names.size(); j++) {
-                System.out.println((j + 1) + ". " + names.get(j) + " - " + prices.get(j));
+                System.out.println((j + 1) + ". " + names.get(j) + " - ₹" + prices.get(j));
             }
 
             System.out.print("Choose item (number): ");
@@ -49,7 +61,7 @@ public class Order {
             System.out.print("Enter quantity: ");
             int qty = sc.nextInt();
 
-            int itemId = ids.get(choice - 1);
+            String itemId = ids.get(choice - 1);
             String name = names.get(choice - 1);
             double price = prices.get(choice - 1);
 
@@ -77,7 +89,7 @@ public class Order {
             item.displayItem();
         }
 
-        System.out.println("Total: " + totalAmount);
+        System.out.println("Total: ₹" + totalAmount);
     }
 
     public void setPayment(Payment payment) {
