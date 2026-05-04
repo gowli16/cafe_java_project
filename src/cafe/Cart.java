@@ -124,28 +124,5 @@ public class Cart {
             System.out.println("Error saving cart: " + e.getMessage());
         }
     }
-    /*
-     * // testing main method
-     * public static void main(String[] args) {
-     * 
-     * Cart cart = new Cart();
-     * 
-     * // temporary customerId (later get this from Customer class)
-     * cart.setCustomerId("C001");
-     * 
-     * cart.addToCart();
-     * 
-     * System.out.println("Do you want to remove item? (yes/no)");
-     * Scanner sc = new Scanner(System.in);
-     * String ans = sc.nextLine();
-     * 
-     * if (ans.equalsIgnoreCase("yes")) {
-     * cart.removeItem();
-     * cart.viewCart();
-     * cart.totalAmount();
-     * }
-     * 
-     * cart.saveCartToCSV();
-     * }
-     */
+   
 }
