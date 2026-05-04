@@ -53,7 +53,7 @@ public class Admin extends AbstractUser {
                 break;
 
             case 7:
-                report.generateDailyReport(); // better than display only
+                report.generateDailyReport(); 
                 break;
 
             default:
