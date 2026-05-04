@@ -1,4 +1,4 @@
-package project;
+
 import java.util.*;
 import java.io.*;
 
@@ -12,7 +12,6 @@ public class Cart {
     ArrayList<MenuItem> cartItems = new ArrayList<MenuItem>();
     String path = "cart.csv";
 
-    
     public void addToCart() {
         MenuItem menu = new MenuItem("", "", "", 0, false);
         ArrayList<MenuItem> menuList = menu.loadMenu();
@@ -21,7 +20,7 @@ public class Cart {
         while (!choice.equalsIgnoreCase("exit")) {
             System.out.println("Enter item to cart: ");
             String selectedItem = sc.nextLine();
-            boolean found = false; 
+            boolean found = false;
 
             for (MenuItem item : menuList) {
                 if (item.getItemName().equalsIgnoreCase(selectedItem)) {
@@ -36,7 +35,8 @@ public class Cart {
             }
             System.out.println("Type 'exit' to stop adding items else type 'continue'");
             choice = sc.nextLine();
-        }viewCart();      
+        }
+        viewCart();
         totalAmount();
         System.out.println("Do you want to remove item? (yes/no)");
         String ans = sc.nextLine();
@@ -57,7 +57,7 @@ public class Cart {
             if (cartItems.get(i).getItemName().equalsIgnoreCase(itemRemove)) {
                 cartItems.remove(i);
                 System.out.println("Item has been removed from cart");
-                return; 
+                return;
             }
         }
         System.out.println("Item not found in cart.");
@@ -87,7 +87,6 @@ public class Cart {
         return totalAmount;
     }
 
-    
     public void setCustomerId(String customerId) {
         this.customerId = customerId;
     }
@@ -111,9 +110,8 @@ public class Cart {
             for (MenuItem item : cartItems) {
                 writer.write(
                         customerId + "," +
-                        item.getItemName() + "," +
-                        item.getPrice()
-                );
+                                item.getItemName() + "," +
+                                item.getPrice());
 
                 writer.newLine();
             }
@@ -126,26 +124,28 @@ public class Cart {
             System.out.println("Error saving cart: " + e.getMessage());
         }
     }
-/*    // testing main method
-    public static void main(String[] args) {
-
-        Cart cart = new Cart();
-
-        // temporary customerId (later get this from Customer class)
-        cart.setCustomerId("C001");
-
-        cart.addToCart();     
-           
-        System.out.println("Do you want to remove item? (yes/no)");
-        Scanner sc = new Scanner(System.in);
-        String ans = sc.nextLine();
-
-        if (ans.equalsIgnoreCase("yes")) {
-            cart.removeItem();
-            cart.viewCart();
-            cart.totalAmount();
-        }
-
-        cart.saveCartToCSV();
-    } */
+    /*
+     * // testing main method
+     * public static void main(String[] args) {
+     * 
+     * Cart cart = new Cart();
+     * 
+     * // temporary customerId (later get this from Customer class)
+     * cart.setCustomerId("C001");
+     * 
+     * cart.addToCart();
+     * 
+     * System.out.println("Do you want to remove item? (yes/no)");
+     * Scanner sc = new Scanner(System.in);
+     * String ans = sc.nextLine();
+     * 
+     * if (ans.equalsIgnoreCase("yes")) {
+     * cart.removeItem();
+     * cart.viewCart();
+     * cart.totalAmount();
+     * }
+     * 
+     * cart.saveCartToCSV();
+     * }
+     */
 }

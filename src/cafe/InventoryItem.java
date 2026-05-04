@@ -1,11 +1,11 @@
-package cafe;
+
 import java.util.*;
 import java.io.*;
 
 public class InventoryItem {
 
     Scanner sc = new Scanner(System.in);
-    String path="inventory.csv";
+    String path = "inventory.csv";
     private int inventoryId;
     private String ingredientName;
     private int quantityAvailable;
@@ -36,8 +36,7 @@ public class InventoryItem {
                         data[1],
                         Integer.parseInt(data[2]),
                         data[3],
-                        Integer.parseInt(data[4])
-                );
+                        Integer.parseInt(data[4]));
 
                 inventoryList.add(item);
             }
@@ -58,7 +57,8 @@ public class InventoryItem {
 
             for (int i = 0; i < inventoryList.size(); i++) {
                 InventoryItem item = inventoryList.get(i);
-                bw.write(item.inventoryId + "," + item.ingredientName + "," + item.quantityAvailable + "," + item.unit + "," + item.reorderLevel);
+                bw.write(item.inventoryId + "," + item.ingredientName + "," + item.quantityAvailable + "," + item.unit
+                        + "," + item.reorderLevel);
                 bw.newLine();
             }
 
@@ -151,11 +151,13 @@ public class InventoryItem {
         System.out.println("Inventory item not found");
     }
 
-   /* public static void main(String[] args) {
-        InventoryItem item = new InventoryItem(0, "", 0, "", 0);
-        item.displayInventory();
-        item.checkAvailability();
-        item.addStock();
-        item.reduceStock();
-    } */
+    /*
+     * public static void main(String[] args) {
+     * InventoryItem item = new InventoryItem(0, "", 0, "", 0);
+     * item.displayInventory();
+     * item.checkAvailability();
+     * item.addStock();
+     * item.reduceStock();
+     * }
+     */
 }

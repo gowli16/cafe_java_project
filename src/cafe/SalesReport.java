@@ -1,11 +1,10 @@
-package cafe;
 import java.util.*;
 import java.io.*;
 
 public class SalesReport {
 
-    String pathcart="cart.csv";
-    String pathsales="salesreport.csv";
+    String pathcart = "cart.csv";
+    String pathsales = "salesreport.csv";
     private int reportId;
     private double totalSales;
     private String bestSellingItem;
@@ -100,9 +99,11 @@ public class SalesReport {
         System.out.println("Report Date: " + reportDate);
     }
 
-   /* public static void main(String[] args) {
-        SalesReport report = new SalesReport(0, 0, "", null);
-        report.generateDailyReport();
-        report.displayReport();
-    }*/
+    /*
+     * public static void main(String[] args) {
+     * SalesReport report = new SalesReport(0, 0, "", null);
+     * report.generateDailyReport();
+     * report.displayReport();
+     * }
+     */
 }

@@ -1,4 +1,4 @@
-package project;
+
 import java.util.*;
 import java.io.*;
 
@@ -14,7 +14,7 @@ public class MenuItem {
     boolean availabilityStatus;
 
     public MenuItem(String itemId, String itemName, String category,
-                    double price, boolean availabilityStatus) {
+            double price, boolean availabilityStatus) {
         this.itemId = itemId;
         this.itemName = itemName;
         this.category = category;
@@ -22,8 +22,6 @@ public class MenuItem {
         this.availabilityStatus = availabilityStatus;
     }
 
-    
-    
     public ArrayList<MenuItem> loadMenu() {
         ArrayList<MenuItem> menuList = new ArrayList<MenuItem>();
 
@@ -31,7 +29,7 @@ public class MenuItem {
             BufferedReader br = new BufferedReader(new FileReader(path));
 
             String line;
-            br.readLine(); 
+            br.readLine();
 
             while ((line = br.readLine()) != null) {
                 String[] fields = line.split(",");
@@ -41,8 +39,7 @@ public class MenuItem {
                         fields[1],
                         fields[2],
                         Double.parseDouble(fields[3]),
-                        Boolean.parseBoolean(fields[4])
-                );
+                        Boolean.parseBoolean(fields[4]));
 
                 menuList.add(item);
             }
@@ -56,8 +53,6 @@ public class MenuItem {
         return menuList;
     }
 
-    
-    
     public void displayMenuAdmin() {
         ArrayList<MenuItem> menuList = loadMenu();
 
@@ -73,8 +68,7 @@ public class MenuItem {
                     item.availabilityStatus);
         }
     }
-    
-    
+
     public void displayMenu() {
         ArrayList<MenuItem> menuList = loadMenu();
 
@@ -89,8 +83,7 @@ public class MenuItem {
                     item.availabilityStatus);
         }
     }
-    
-    
+
     public void updateItem() {
         ArrayList<MenuItem> menuList = loadMenu();
 
@@ -113,7 +106,7 @@ public class MenuItem {
                         System.out.print("Enter updated price: ");
                         double priceChange = sc.nextDouble();
                         item.price = priceChange;
-                     }
+                    }
                 }
                 System.out.println("Change made successfully!!");
                 break;
@@ -151,8 +144,7 @@ public class MenuItem {
                         nameAddition,
                         categoryAddition,
                         priceAddition,
-                        availabilityStatusAddition
-                );
+                        availabilityStatusAddition);
 
                 menuList.add(newItem);
 
@@ -164,9 +156,9 @@ public class MenuItem {
                 String removeId = sc.next();
 
                 for (int i = 0; i < menuList.size(); i++) {
-                    if (menuList.get(i).itemId.equals(removeId)) {             
-                        
-                    	menuList.remove(i);
+                    if (menuList.get(i).itemId.equals(removeId)) {
+
+                        menuList.remove(i);
                         System.out.println("Change made successfully!!");
                         break;
                     }
@@ -179,8 +171,6 @@ public class MenuItem {
         write(menuList);
     }
 
-    
-    
     public void write(ArrayList<MenuItem> menuList) {
 
         try {
@@ -191,11 +181,10 @@ public class MenuItem {
             for (MenuItem item : menuList) {
                 writer.write(
                         item.itemId + "," +
-                        item.itemName + "," +
-                        item.category + "," +
-                        item.price + "," +
-                        item.availabilityStatus
-                );
+                                item.itemName + "," +
+                                item.category + "," +
+                                item.price + "," +
+                                item.availabilityStatus);
                 writer.newLine();
             }
 
@@ -205,25 +194,26 @@ public class MenuItem {
             System.out.println("An error occurred: " + e.getMessage());
         }
     }
-    
-    public String getItemName() {
-    	return itemName;
-    }
-    
-    public String getItemId() {
-    	return itemId;
-    }
-    
-    public double getPrice() {
-    	return price;
-    }
-    
-    
-    /*public static void main(String[] args) {
-        MenuItem m = new MenuItem("", "", "", 0, false);
 
-        m.displayMenu();
-        m.updateItem();
-        m.displayMenu();
-    } */
+    public String getItemName() {
+        return itemName;
+    }
+
+    public String getItemId() {
+        return itemId;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    /*
+     * public static void main(String[] args) {
+     * MenuItem m = new MenuItem("", "", "", 0, false);
+     * 
+     * m.displayMenu();
+     * m.updateItem();
+     * m.displayMenu();
+     * }
+     */
 }

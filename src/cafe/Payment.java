@@ -1,4 +1,4 @@
-package project;
+
 import java.util.Scanner;
 
 public class Payment {
@@ -15,18 +15,16 @@ public class Payment {
         this.paymentStatus = "Pending";
     }
 
-   
     public void takePayment(Scanner sc) {
 
         System.out.print("\nEnter Payment ID: ");
         paymentId = sc.next();
-        sc.nextLine(); 
+        sc.nextLine();
 
         System.out.print("Enter Payment Method: ");
         paymentMethod = sc.nextLine();
     }
 
-   
     public void processPayment(Scanner sc) {
 
         takePayment(sc);
