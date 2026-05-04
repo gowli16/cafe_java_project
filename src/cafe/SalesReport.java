@@ -99,11 +99,5 @@ public class SalesReport {
         System.out.println("Report Date: " + reportDate);
     }
 
-    /*
-     * public static void main(String[] args) {
-     * SalesReport report = new SalesReport(0, 0, "", null);
-     * report.generateDailyReport();
-     * report.displayReport();
-     * }
-     */
+    
 }
