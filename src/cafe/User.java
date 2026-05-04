@@ -174,8 +174,7 @@ public class User {
 	            		+ "\tCustomer Amenities\n"
 	            		+ "1.Display Menu\n"
 	            		+ "2.Add to Cart\n"
-	            		+ "3.Place Order\n"
-	            		+ "4.Make Payment\n"
+	            		+ "3.Place Order & Make Payment\n"
 	            		);
 	            int option=sc.nextInt();
 	            sc.nextLine();
@@ -189,10 +188,20 @@ public class User {
                     cart.addToCart();
 	            	break;
 	            case 3:
-	            	
-	            	break;
-	            case 4:
-	            	
+	            	System.out.print("Enter Order ID: ");
+	            	String orderId = sc.next();
+	            	sc.nextLine();
+	                Order order = new Order(orderId);
+	                try {
+	            	order.takeOrder();
+	                }
+	            	catch(Exception e) {
+	            		System.out.println("An error occurred: "+e.getMessage());
+	            	}
+	                
+	                Payment payment = new Payment(order);
+	                order.setPayment(payment);
+	                payment.processPayment(sc);
 	            	break;
 	            default:
 	            	System.out.println("Invalid choice");
