@@ -1,47 +1,28 @@
 
-import java.util.Scanner;
+import java.util.*;
 
 public class Payment {
 
-    String paymentId;
-    double amount;
-    String paymentMethod;
-    String paymentStatus;
     Order order;
+    String method;
 
     public Payment(Order order) {
         this.order = order;
-        this.amount = order.totalAmount;
-        this.paymentStatus = "Pending";
     }
 
-    public void takePayment(Scanner sc) {
-
-        System.out.print("\nEnter Payment ID: ");
-        paymentId = sc.next();
-        sc.nextLine();
-
-        System.out.print("Enter Payment Method: ");
-        paymentMethod = sc.nextLine();
+    public void takePayment() {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Method: ");
+        method = sc.next();
     }
 
-    public void processPayment(Scanner sc) {
-
-        takePayment(sc);
-
-        paymentStatus = "Completed";
-
-        System.out.println("Payment successful for Order ID: " + order.orderId);
-
-        generateReceipt();
+    public void processPayment() {
+        System.out.println("Payment done");
     }
 
     public void generateReceipt() {
-
-        System.out.println("\n----- RECEIPT -----");
-        System.out.println("Order ID: " + order.orderId);
-        System.out.println("Amount Paid: " + amount);
-        System.out.println("Payment Method: " + paymentMethod);
-        System.out.println("Status: " + paymentStatus);
+        System.out.println("Receipt:");
+        order.displayOrder();
+        System.out.println("Method: " + method);
     }
 }

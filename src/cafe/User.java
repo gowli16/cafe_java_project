@@ -1,12 +1,11 @@
 
+
 import java.util.*;
 import java.io.*;
 
 public abstract class User {
 
     static String menuChoiceCust = "continue";
-    static String menuChoiceAdm = "continue";
-
     Scanner sc = new Scanner(System.in);
 
     protected String name, password, userId;
@@ -19,95 +18,55 @@ public abstract class User {
     }
 
     public ArrayList<User> loadData() {
-        ArrayList<User> loginList = new ArrayList<>();
+        ArrayList<User> list = new ArrayList<>();
 
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(path));
+            BufferedReader br = new BufferedReader(new FileReader(path));
             String line;
+            br.readLine();
 
-            reader.readLine();
-
-            while ((line = reader.readLine()) != null) {
-                String[] fields = line.split(",");
-
-                if (fields.length >= 3) {
-                    loginList.add(new BasicUser(
-                            fields[0].trim(),
-                            fields[1].trim(),
-                            fields[2].trim()));
-                }
+            while ((line = br.readLine()) != null) {
+                String[] f = line.split(",");
+                list.add(new BasicUser(f[0], f[1], f[2]));
             }
-
-            reader.close();
-
-        } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());
+            br.close();
+        } catch (Exception e) {
+            System.out.println(e);
         }
-
-        return loginList;
-    }
-
-    public void saveNewRegister(String n, String p) {
-        ArrayList<User> loginList = loadData();
-        String userIdAddition;
-
-        if (loginList.isEmpty()) {
-            userIdAddition = "C001";
-        } else {
-            User lastItem = loginList.get(loginList.size() - 1);
-            int lastId = Integer.parseInt(lastItem.userId.substring(1));
-            userIdAddition = "C" + String.format("%03d", lastId + 1);
-        }
-
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
-            bw.newLine();
-            bw.write(n + "," + p + "," + userIdAddition);
-        } catch (IOException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
+        return list;
     }
 
     public String login() {
-        ArrayList<User> loginList = loadData();
+        ArrayList<User> list = loadData();
 
-        System.out.print("\nEnter username: ");
+        System.out.print("Username: ");
         String n = sc.next();
 
-        System.out.print("Enter password: ");
+        System.out.print("Password: ");
         String p = sc.next();
 
-        for (User item : loginList) {
-            if (item.name.equals(n) && item.password.equals(p)) {
-                System.out.println("Login successful!!");
-                System.out.println("User ID: " + item.userId);
-                return item.userId;
+        for (User u : list) {
+            if (u.name.equals(n) && u.password.equals(p)) {
+                System.out.println("Login successful");
+                return u.userId;
             }
         }
-
-        System.out.println("Login failed.");
+        System.out.println("Login failed");
         return null;
     }
 
     public String register() {
-        ArrayList<User> loginList = loadData();
-
-        System.out.print("\nEnter username: ");
+        System.out.print("Username: ");
         String n = sc.next();
 
-        for (User item : loginList) {
-            if (item.name.equals(n)) {
-                System.out.println("Username already exists.");
-                return null;
-            }
-        }
-
-        System.out.print("Enter password: ");
+        System.out.print("Password: ");
         String p = sc.next();
 
-        saveNewRegister(n, p);
-
-        System.out.println("Registration successful!");
-        System.out.println("Now login...");
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path, true))) {
+            bw.newLine();
+            bw.write(n + "," + p + ",C001");
+        } catch (Exception e) {
+        }
 
         return login();
     }
@@ -115,36 +74,19 @@ public abstract class User {
     public abstract void showMenu();
 
     public static void main(String[] args) throws Exception {
+
         Scanner sc = new Scanner(System.in);
         User user = new BasicUser("", "", "");
 
-        System.out.println("====== CAFE SYSTEM ======");
-        System.out.println("1. Login");
-        System.out.println("2. Register");
-        System.out.print("Enter choice: ");
+        System.out.println("1.Login\n2.Register");
+        int ch = sc.nextInt();
 
-        int choice = sc.nextInt();
-        sc.nextLine();
+        String id = (ch == 1) ? user.login() : user.register();
 
-        String userId = null;
-
-        if (choice == 1) {
-            userId = user.login();
-        } else if (choice == 2) {
-            userId = user.register();
-        } else {
-            System.out.println("Invalid choice.");
+        if (id == null)
             return;
-        }
 
-        if (userId == null) {
-            System.out.println("Exiting...");
-            return;
-        }
-
-        user.userId = userId;
+        user.userId = id;
         user.showMenu();
-
-        sc.close();
     }
 }
