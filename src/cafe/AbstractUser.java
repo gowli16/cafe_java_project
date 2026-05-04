@@ -9,7 +9,6 @@ public abstract class AbstractUser {
         this.userId = userId;
     }
 
-    // ABSTRACT METHODS → requirement satisfied
     public abstract void displayMenu();
     public abstract void performOperation(int choice, Scanner sc);
 }
