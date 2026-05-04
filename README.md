@@ -1,6 +1,7 @@
 Cafe-Management System
+
 Members : Anjana R , Gowri Menon , Meenakshi N M
-Anjana worked on the Cart MenuItem User classes. Gowri Menon worked on the Order ,OrderItem and Payment classes
+Anjana worked on the Cart MenuItem User classes. Gowri worked on the Order ,OrderItem and Payment classes. Meenakshi worked on the InventoryItem and Sales report classes along with the UML diagram. 
 
 Problem Description:
 Many cafés still rely on manual processes to manage orders, menus, and payments. This often leads to issues such as incorrect billing, longer waiting times, poor order tracking, and difficulty in managing inventory. Staff must handle multiple tasks simultaneously, increasing the chances of human error and reducing overall service efficiency.
