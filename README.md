@@ -92,4 +92,5 @@ Data Storage
 - mockpasswordlist.csv → stores user credentials
 
  Development Tools
-- VS Code (or any Java IDE)
+- VS Code and Eclipse
+
