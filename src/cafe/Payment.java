@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class Payment {
     int paymentId;
@@ -6,12 +7,21 @@ public class Payment {
     String paymentStatus;
     Order order;
 
-    public Payment(int paymentId, double amount, String paymentMethod, Order order) {
-        this.paymentId = paymentId;
-        this.amount = amount;
-        this.paymentMethod = paymentMethod;
+    public Payment(Order order) {
         this.order = order;
+        this.amount = order.totalAmount;
         this.paymentStatus = "Pending";
+    }
+
+    public void takePayment() {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("\nEnter Payment ID: ");
+        paymentId = sc.nextInt();
+        sc.nextLine();
+
+        System.out.print("Enter Payment Method: ");
+        paymentMethod = sc.nextLine();
     }
 
     public void processPayment() {
@@ -20,16 +30,10 @@ public class Payment {
     }
 
     public void generateReceipt() {
-        System.out.println("----- RECEIPT -----");
+        System.out.println("\n----- RECEIPT -----");
         System.out.println("Order ID: " + order.orderId);
         System.out.println("Amount Paid: " + amount);
         System.out.println("Payment Method: " + paymentMethod);
-        System.out.println("Payment Status: " + paymentStatus);
-    }
-
-    public void displayPayment() {
-        System.out.println("Payment ID: " + paymentId);
-        System.out.println("Amount: " + amount);
         System.out.println("Status: " + paymentStatus);
     }
 }
