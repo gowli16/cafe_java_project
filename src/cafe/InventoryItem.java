@@ -151,13 +151,5 @@ public class InventoryItem {
         System.out.println("Inventory item not found");
     }
 
-    /*
-     * public static void main(String[] args) {
-     * InventoryItem item = new InventoryItem(0, "", 0, "", 0);
-     * item.displayInventory();
-     * item.checkAvailability();
-     * item.addStock();
-     * item.reduceStock();
-     * }
-     */
+    
 }
